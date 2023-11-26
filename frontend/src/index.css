@@ -28,12 +28,12 @@ svg {
   --lh-1-4: 1.4;
 
   /* colors */
-  --accent: 183 74% 44%;
-  --bkg: 190 60% 98%;
-  --text: 185 26% 9%;
-  --muted: 183 8% 55%;
-  --light: 180 14% 85%;
-  --warning: 4 66% 63%;
+  --accent: 140, 61%, 45%; /* Green */
+  --bkg: 250, 12%, 95%; /* Light Gray */
+  --text: 15, 14%, 24%; /* Dark Gray */
+  --muted: 183, 8%, 55%;
+  --light: 180, 14%, 85%;
+  --warning: 4, 66%, 63%;
 
   /* utils */
   --space-xs: 8px;
