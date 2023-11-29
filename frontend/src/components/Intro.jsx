@@ -6,6 +6,9 @@ import { UserPlusIcon } from "@heroicons/react/24/solid";
 //Assests
 import illustration from "../assets/illustration.jpg"
 
+import './Intro.css';
+
+
 const Intro = () => {
   return (
     <div className="intro">

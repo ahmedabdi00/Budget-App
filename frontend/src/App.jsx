@@ -1,11 +1,14 @@
+import React from "react";
 import {
+  BrowserRouter,
+  Route,
+  Routes,
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-//Library imports
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 // Layouts
 import Main, { mainLoader } from "./layouts/Main";
@@ -13,9 +16,11 @@ import Main, { mainLoader } from "./layouts/Main";
 // Actions
 import { logoutAction } from "./actions/logout";
 
-// Routes
+// Pages
 import Dashboard, { dashboardAction, dashboardLoader } from "./pages/Dashboard";
 import Error from "./pages/Error";
+import BlogPage from "./pages/BlogPage";
+
 
 const router = createBrowserRouter([
   {
@@ -29,21 +34,40 @@ const router = createBrowserRouter([
         element: <Dashboard />,
         loader: dashboardLoader,
         action: dashboardAction,
-        errorElement: <Error />
+        errorElement: <Error />,
       },
       {
         path: "logout",
-        action: logoutAction
-      }
-    ]
+        action: logoutAction,
+      },
+      {
+        path: "blog",
+        element: <BlogPage />,
+
+      },
+      
+    ],
   },
 ]);
 
 function App() {
-  return <div className="App">
-    <RouterProvider router={router} />
-    <ToastContainer />
-  </div>;
+  return (
+    <div className="App">
+      <RouterProvider router={router}>
+        {/* Use BrowserRouter for top-level routes */}
+        <BrowserRouter>
+          <Routes>
+            {/* Define your top-level routes here */}
+            <Route
+              path="/*"
+              element={<Main />} // Adjust this based on your layout structure
+            />
+          </Routes>
+        </BrowserRouter>
+      </RouterProvider>
+      <ToastContainer />
+    </div>
+  );
 }
 
 export default App;

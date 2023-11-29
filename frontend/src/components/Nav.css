@@ -1,0 +1,36 @@
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #4285f4;
+  color: white;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+}
+
+.logo img {
+  margin-right: 10px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.blog-link {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+

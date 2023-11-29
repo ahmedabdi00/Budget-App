@@ -1,0 +1,17 @@
+.intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+}
+
+.intro h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.intro p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
