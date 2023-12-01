@@ -16,8 +16,8 @@ const getUserWithEmail = async (email) => {
 
 const addUser = async (user) => {
   const queryDef = {
-    text: `INSERT INTO users (first_name, last_name email, password)
-    VALUES ($1, $2, $3) RETURNING *;`, 
+    text: `INSERT INTO users (first_name, last_name, email, password)
+    VALUES ($1, $2, $3, $4) RETURNING *;`, 
     values: [user.first_name, user.last_name, user.email, user.password],
     };
     const data = await db.query(queryDef);

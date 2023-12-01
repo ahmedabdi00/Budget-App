@@ -8,8 +8,8 @@ const addBudget = async (data) => {
     VALUES ($1, $2, $3, $4, $5) RETURNING *;`, 
     values: [data.user_id, data.category_id, data.allocated_amount, data.total_amount, data.duration],
     };
-    const data = await db.query(queryDef);
-    return data.rows[0];
+    const result = await db.query(queryDef);
+    return result.rows[0];
 };
 
 //add category
@@ -20,8 +20,8 @@ const addCategory = async (data) => {
     VALUES ($1, $2) RETURNING *;`, 
     values: [data.user_id, data.category],
     };
-    const data = await db.query(queryDef);
-    return data.rows[0];
+    const result = await db.query(queryDef);
+    return result.rows[0];
 };
 
 //add finances
@@ -32,8 +32,8 @@ const addFinance = async (data) => {
     VALUES ($1, $2, $3, $4, $5) RETURNING *;`, 
     values: [data.user_id, data.source, data.amount, data.duration, data.fixed],
     };
-    const data = await db.query(queryDef);
-    return data.rows[0];
+    const result = await db.query(queryDef);
+    return result.rows[0];
 };
 
 //add expense
@@ -44,8 +44,8 @@ const addExpense = async (data) => {
     VALUES ($1, $2, $3) RETURNING *;`,
     values: [data.user_id, data.category_id, data.amount],
     };
-    const data = await db.query(queryDef);
-    return data.rows[0];
+    const result = await db.query(queryDef);
+    return result.rows[0];
 };
 
 module.exports = { addBudget, addCategory, addFinance, addExpense };

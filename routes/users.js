@@ -10,14 +10,24 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const { getUsers, getUserWithEmail, addUser } = require("../db/queries/users");
 
+router.get("/", async (req, res) => {
+  try {
+    const data = await getUsers();
+    res.json({ data });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 router.post("/register", async (req, res) => {
   const user = req.body;
   user.password = bcrypt.hashSync(user.password, 12);
   try {
     const data = await addUser(user);
-    req.session.userId = user.id;
+    req.session.userId = data.id;
+    
     res.json({ data });
-    res.redirect(`/`);
+    
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -36,7 +46,6 @@ router.post("/login", async (req, res) => {
     }
     req.session.userId = data.id;
     res.json({ data });
-    res.redirect(`/`);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
