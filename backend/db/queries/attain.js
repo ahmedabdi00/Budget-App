@@ -13,10 +13,10 @@ const getBudget = async (user_id) => {
 
 //get budgets of specific category
 
-const getBudgetOfCategory = async (user_id, category_id) => {
+const getBudgetOfCategory = async (user_id, info) => {
   const queryDef = {
   text: `SELECT * FROM budget WHERE user_id = $1 AND category_id = $2;`, 
-  values: [user_id, category_id],
+  values: [user_id, info.category_id],
   };
   const data = await db.query(queryDef);
   return data.rows[0];
@@ -46,10 +46,10 @@ const getExpenses = async (user_id) => {
 
 //get expenses for specific category
 
-const getExpensesOfCategory = async (user_id, category_id) => {
+const getExpensesOfCategory = async (user_id, info) => {
   const queryDef = {
   text: `SELECT * FROM expenses WHERE user_id = $1 AND category_id = $2;`, 
-  values: [user_id, category_id],
+  values: [user_id, info.category_id],
   };
   const data = await db.query(queryDef);
   return data.rows[0];

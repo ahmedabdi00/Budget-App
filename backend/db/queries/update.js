@@ -32,7 +32,7 @@ const updateCategory = async (data) => {
 
 const updateFinance = async (data) => {
   const queryDef = {
-    text: `UPDATE finances SET source = $1, amount = $2, duration, $3, fixed = $4 WHERE id = $5 RETURNING *;`,
+    text: `UPDATE finances SET source = $1, amount = $2, duration = $3, fixed = $4 WHERE id = $5 RETURNING *;`,
     values: [data.source, data.amount, data.duration, data.fixed, data.id],
   };
   const result = await db.query(queryDef);
