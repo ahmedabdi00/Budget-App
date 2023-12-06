@@ -1,13 +1,17 @@
-import { useState } from "react";
-import { Form } from "react-router-dom";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import "./Intro.css";
 
 const LoginSignup = ({
-  formData,
   handleInputChange,
   handleRegisterSubmit,
   handleLoginSubmit,
 }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const [loginMode, setLoginMode] = useState(true);
 
   const toggleMode = () => {
@@ -21,18 +25,16 @@ const LoginSignup = ({
         <div className="underline"></div>
       </div>
 
-      {/* Form for registration */}
       {!loginMode && (
-        <Form method="post" onSubmit={handleRegisterSubmit}>
+        <form method="post" onSubmit={handleSubmit(handleRegisterSubmit)}>
           <div className="inputs">
             <label htmlFor="userName">Name:</label>
             <input
               type="text"
               id="userName"
               name="userName"
-              value={formData?.userName || ""}
               onChange={handleInputChange}
-              required
+              {...register("userName", { required: true })}
             />
           </div>
 
@@ -42,9 +44,8 @@ const LoginSignup = ({
               type="email"
               id="email"
               name="email"
-              value={formData?.email || ""}
               onChange={handleInputChange}
-              required
+              {...register("email", { required: true })}
             />
           </div>
 
@@ -54,28 +55,25 @@ const LoginSignup = ({
               type="password"
               id="password"
               name="password"
-              value={formData?.password || ""}
               onChange={handleInputChange}
-              required
+              {...register("password", { required: true })}
             />
           </div>
 
           <button type="submit">Sign Up</button>
-        </Form>
+        </form>
       )}
 
-      {/* Form for login */}
       {loginMode && (
-        <Form method="post" onSubmit={handleLoginSubmit}>
+        <form method="post" onSubmit={handleSubmit(handleLoginSubmit)}>
           <div className="inputs">
             <label htmlFor="email">Email:</label>
             <input
               type="email"
               id="email"
               name="email"
-              value={formData?.email || ""}
               onChange={handleInputChange}
-              required
+              {...register("email", { required: true })}
             />
           </div>
 
@@ -85,14 +83,13 @@ const LoginSignup = ({
               type="password"
               id="password"
               name="password"
-              value={formData?.password || ""}
               onChange={handleInputChange}
-              required
+              {...register("password", { required: true })}
             />
           </div>
 
           <button type="submit">Sign In</button>
-        </Form>
+        </form>
       )}
 
       <div className="submit">

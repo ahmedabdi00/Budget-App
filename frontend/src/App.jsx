@@ -37,13 +37,6 @@ const router = createBrowserRouter([
         errorElement: <Error />,
       },
       {
-        path: "budget-tracker", // Add a new route for Budget Tracker
-        element: <Dashboard />,
-        loader: dashboardLoader,
-        action: dashboardAction,
-        errorElement: <Error />,
-      },
-      {
         path: "logout",
         action: logoutAction,
       },
