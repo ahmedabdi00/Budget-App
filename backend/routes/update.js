@@ -9,7 +9,7 @@ const {
   deleteCategory,
   deleteFinance,
   deleteExpense,
-} = require("../db/queries/insert");
+} = require("../db/queries/update");
 
 router.put('/budget', async (req, res) => {
   try {
