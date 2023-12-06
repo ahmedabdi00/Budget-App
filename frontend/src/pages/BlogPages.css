@@ -22,3 +22,16 @@
   font-weight: bold;
   margin-bottom: 10px;
 }
+
+.blog-image {
+  width: 100%; 
+  margin-bottom: 10px; 
+}
+
+.text-lg {
+  margin-bottom: 10px;
+}
+
+.text-gray-600 {
+  margin-top: 10px;
+}

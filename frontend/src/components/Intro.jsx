@@ -1,40 +1,111 @@
-import { Form } from "react-router-dom"
+import { useState } from "react";
+import { Form } from "react-router-dom";
+import "./Intro.css";
 
-//Library
-import { UserPlusIcon } from "@heroicons/react/24/solid";
+const LoginSignup = ({
+  formData,
+  handleInputChange,
+  handleRegisterSubmit,
+  handleLoginSubmit,
+}) => {
+  const [loginMode, setLoginMode] = useState(true);
 
-//Assests
-import illustration from "../assets/illustration.jpg"
+  const toggleMode = () => {
+    setLoginMode((prevMode) => !prevMode);
+  };
 
-import './Intro.css';
-
-
-const Intro = () => {
   return (
-    <div className="intro">
-      <div>
-        <h1>
-          Take Control of <span className="accent">Your Money</span>
-        </h1>
-        <p>
-          Personal budgeting is the secret to financial freedom. Start your journey today.
-        </p>
-        <Form method="post">
-          <input
-            type="text"
-            name="userName"
-            required
-            placeholder="What is your name?" aria-label="Your Name" autoComplete="given-name"
-          />
-          <input type="hidden" name="_action" value="newUser" />  
-          <button type="submit" className="btn btn--dark">
-            <span>Create Account</span>
-            <UserPlusIcon width={20} />
-          </button>
-        </Form>
+    <div className="container">
+      <div className="header">
+        <div className="text">{loginMode ? "Sign In" : "Sign Up"}</div>
+        <div className="underline"></div>
       </div>
-      <img src={illustration} alt="Person with money" width={600} />
+
+      {/* Form for registration */}
+      {!loginMode && (
+        <Form method="post" onSubmit={handleRegisterSubmit}>
+          <div className="inputs">
+            <label htmlFor="userName">Name:</label>
+            <input
+              type="text"
+              id="userName"
+              name="userName"
+              value={formData?.userName || ""}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
+          <div className="inputs">
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData?.email || ""}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
+          <div className="inputs">
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData?.password || ""}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
+          <button type="submit">Sign Up</button>
+        </Form>
+      )}
+
+      {/* Form for login */}
+      {loginMode && (
+        <Form method="post" onSubmit={handleLoginSubmit}>
+          <div className="inputs">
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData?.email || ""}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
+          <div className="inputs">
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData?.password || ""}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
+          <button type="submit">Sign In</button>
+        </Form>
+      )}
+
+      <div className="submit">
+        <div className="forgot-password">
+          {loginMode ? "Forgot Password? " : ""}
+          <span>Click Here!</span>
+        </div>
+        <button type="button" onClick={toggleMode}>
+          {loginMode ? "Sign Up" : "Sign In"}
+        </button>
+      </div>
     </div>
-  )
-}
-export default Intro
+  );
+};
+
+export default LoginSignup;

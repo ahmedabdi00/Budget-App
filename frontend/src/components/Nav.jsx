@@ -1,9 +1,8 @@
-
 import React from "react";
 import { Form, NavLink } from "react-router-dom";
 import { TrashIcon } from "@heroicons/react/24/solid";
 import logomark from "../assets/logomark.svg";
-import './Nav.css';
+import "./Nav.css";
 
 const Nav = ({ userName }) => {
   return (
@@ -15,11 +14,15 @@ const Nav = ({ userName }) => {
         </NavLink>
       </div>
       <div className="nav-right">
-        <NavLink to="/" activeClassName="active-link">
-          Home
+        <NavLink to="/budget-tracker" activeClassName="active-link">
+          Budget Tracker
         </NavLink>
+
         <NavLink to="/blog" activeClassName="active-link" className="blog-link">
           Blog
+        </NavLink>
+        <NavLink to="/" activeClassName="active-link">
+          Log In
         </NavLink>
         {userName && (
           <Form
