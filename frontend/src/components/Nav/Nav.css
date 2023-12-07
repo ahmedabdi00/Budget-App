@@ -1,0 +1,60 @@
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: var(--space-md);
+  max-width: 1500px;
+  margin-inline: auto;
+  background-color: hsl(var(--bkg));
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  text-decoration: none;
+  font-weight: bold;
+  color: hsl(var(--text));
+}
+
+nav a span {
+  font-size: var(--fs-400);
+}
+
+.btn {
+  --color: hsl(var(--bkg));
+  --backdrop: hsl(var(--accent));
+  background-color: var(--backdrop);
+  color: var(--color);
+  padding: var(--space-xs) var(--space-sm);
+  border: 2px solid var(--backdrop);
+  font-size: var(--fs-300);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  max-width: fit-content;
+  cursor: pointer;
+}
+
+.btn--warning {
+  --backdrop: hsl(var(--warning) / 0.1);
+  border: 2px solid hsl(var(--warning));
+}
+
+.btn span {
+  display: inline-block;
+}
+
+.btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media screen and (max-width: 525px) {
+  nav a span {
+    display: none;
+  }
+}

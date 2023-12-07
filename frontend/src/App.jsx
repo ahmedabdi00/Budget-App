@@ -1,26 +1,25 @@
-import React from "react";
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-
-// Layouts
-import Main, { mainLoader } from "./layouts/Main";
-
-// Actions
+import Main, { mainLoader } from "./layouts/Main/Main";
+import BlogPage from "./pages/BlogPage/BlogPage";
 import { logoutAction } from "./actions/logout";
+import { deleteBudget } from "./actions/deleteBudget";
 
-// Pages
-import Dashboard, { dashboardAction, dashboardLoader } from "./pages/Dashboard";
-import Error from "./pages/Error";
-import BlogPage from "./pages/BlogPage";
-
+// Routes
+import Dashboard, {
+  dashboardAction,
+  dashboardLoader,
+} from "./pages/Dashboard/Dashboard";
+import Error from "./pages/Error/Error";
+import BudgetPage, {
+  budgetAction,
+  budgetLoader,
+} from "./pages/BudgetPage/BudgetPage";
+import ExpensesPage, {
+  expensesAction,
+  expensesLoader,
+} from "./pages/ExpensesPage/ExpensesPage";
 
 const router = createBrowserRouter([
   {
@@ -37,12 +36,33 @@ const router = createBrowserRouter([
         errorElement: <Error />,
       },
       {
+        path: "budget/:id",
+        element: <BudgetPage />,
+        loader: budgetLoader,
+        action: budgetAction,
+        errorElement: <Error />,
+        children: [
+          {
+            path: "delete",
+            action: deleteBudget,
+          },
+        ],
+      },
+      {
+        path: "expenses",
+        element: <ExpensesPage />,
+        loader: expensesLoader,
+        action: expensesAction,
+        errorElement: <Error />,
+      },
+      {
         path: "logout",
         action: logoutAction,
       },
       {
         path: "blog",
         element: <BlogPage />,
+        errorElement: <Error />,
       },
     ],
   },
@@ -51,18 +71,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className="App">
-      <RouterProvider router={router}>
-        {/* Use BrowserRouter for top-level routes */}
-        <BrowserRouter>
-          <Routes>
-            {/* Define your top-level routes here */}
-            <Route
-              path="/*"
-              element={<Main />} // Adjust this based on your layout structure
-            />
-          </Routes>
-        </BrowserRouter>
-      </RouterProvider>
+      <RouterProvider router={router} />
       <ToastContainer />
     </div>
   );

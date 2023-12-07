@@ -1,0 +1,67 @@
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.blog-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.blog-post {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Add a box around the blog posts */
+.blog-post:hover {
+  border: 2px solid #3367d6;
+}
+
+.blog-post h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.blog-post img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.blog-post p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.blog-post .text-blue-500 {
+  color: #1a68db;
+  transition: text-decoration 0.2s ease-in-out;
+}
+
+.blog-post .text-blue-500:hover {
+  text-decoration: underline;
+}
+
+.blog-post .text-gray-600 {
+  color: #666;
+}
+
+/* Add more styles as needed */

@@ -1,23 +1,22 @@
 // rrd imports
 import { Outlet, useLoaderData } from "react-router-dom";
 
-// assets
-import wave from "../assets/wave.svg";
-
 // components
-import Nav from "../components/Nav";
+import Nav from "../../components/Nav/Nav";
 
 //  helper functions
-import { fetchData } from "../helpers"
+import { fetchData } from "../../helpers";
+
+import "./Main.css";
 
 // loader
 export function mainLoader() {
   const userName = fetchData("userName");
-  return { userName }
+  return { userName };
 }
 
 const Main = () => {
-  const { userName } = useLoaderData()
+  const { userName } = useLoaderData();
 
   return (
     <div className="layout">
@@ -26,6 +25,6 @@ const Main = () => {
         <Outlet />
       </main>
     </div>
-  )
-}
-export default Main
+  );
+};
+export default Main;

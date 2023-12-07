@@ -1,0 +1,29 @@
+.intro {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.intro div {
+  display: grid;
+  gap: var(--space-sm);
+  max-width: var(--content-sm);
+}
+
+.intro h1 {
+  font-size: var(--fs-600);
+}
+
+.intro p {
+  font-size: var(--fs-300);
+  color: hsl(var(--muted));
+}
+
+.intro form {
+  display: grid;
+  gap: var(--space-sm);
+  max-width: 25ch;
+}
+
